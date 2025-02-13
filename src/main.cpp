@@ -116,7 +116,6 @@ void loop() {
   doc["pm_2_5_alt"] = ok ? PMS::altCF3(pm) : NAN;
   doc["pm_2_5_epa"] = ok ? PMS::epa(pm.PM_AE_UG_2_5, rh) : NAN;
   doc["pm_10_0"] = ok ? pm.PM_AE_UG_10_0 : NAN;
-  doc["pm_10_0_adj"] = ok ? pm.PM_AE_UG_10_0 + PMS::pm10_delta(pm.PM_AE_UG_2_5) : NAN;
   doc["pm_sp_1_0"] = ok ? pm.PM_SP_UG_1_0 : NAN;
   doc["pm_sp_2_5"] = ok ? pm.PM_SP_UG_2_5 : NAN;
   doc["pm_sp_10_0"] = ok ? pm.PM_SP_UG_10_0 : NAN;
@@ -131,7 +130,7 @@ void loop() {
   #ifdef USE_AQICN
   aqi.pm_1_0 = ok ? pm.PM_AE_UG_1_0 : NAN;
   aqi.pm_2_5 = ok ? PMS::epa(pm.PM_AE_UG_2_5, rh) : NAN;
-  aqi.pm_10_0 = ok ? pm.PM_AE_UG_10_0 + PMS::pm10_delta(pm.PM_AE_UG_2_5) : NAN;
+  aqi.pm_10_0 = ok ? pm.PM_AE_UG_10_0 : NAN;
   #endif
 
   #ifdef USE_TVOC

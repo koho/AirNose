@@ -176,16 +176,3 @@ float PMS::epa(float x, float rh) {
   }
   return v < 0 ? 0 : v;
 }
-
-// When the air quality is poor, the sensor will underestimate the PM10.
-float PMS::pm10_delta(float pm25) {
-  int delta = 0;
-  if (pm25 >= 50 && pm25 < 60) {
-    delta = 10;
-  } else if (pm25 >= 60 && pm25 < 70) {
-    delta = 15;
-  } else if (pm25 >= 70) {
-    delta = 20;
-  }
-  return delta;
-}

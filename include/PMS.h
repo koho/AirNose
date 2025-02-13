@@ -38,7 +38,6 @@ public:
 
   static float altCF3(PMS::DATA& data);
   static float epa(float x, float rh);
-  static float pm10_delta(float pm25);
 
 private:
   enum MODE { MODE_ACTIVE, MODE_PASSIVE };

@@ -90,7 +90,7 @@ void MQTT::sendHADiscovery() {
   doc["cmps"][pm10]["p"] = "sensor";
   doc["cmps"][pm10]["dev_cla"] = "pm10";
   doc["cmps"][pm10]["unit_of_meas"] = "µg/m³";
-  doc["cmps"][pm10]["val_tpl"] = "{{ value_json.pm_10_0_adj }}";
+  doc["cmps"][pm10]["val_tpl"] = "{{ value_json.pm_10_0 }}";
   doc["cmps"][pm10]["uniq_id"] = pm10;
   String pmTrend = String(devId) + "_PM_TREND";
   doc["cmps"][pmTrend]["p"] = "sensor";
