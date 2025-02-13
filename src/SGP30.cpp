@@ -32,6 +32,7 @@ bool SGP30::begin() {
   if (!_sgp.begin()) {
     return false;
   }
+  _startupTime = millis();
   EEPROM.begin(4);
   uint16_t tvoc = readWord(0);
   uint16_t co2 = readWord(2);
@@ -47,6 +48,9 @@ bool SGP30::begin() {
 }
 
 bool SGP30::read(DATA *data, float temperature, float humidity) {
+  if (millis() - _startupTime < 30 * 1000) {
+    return false;
+  }
   if (millis() - _lastSaved > 60 * 60 * 1000) {
     uint16_t TVOCBase, eCO2Base;
     if (_sgp.getIAQBaseline(&eCO2Base, &TVOCBase)) {

@@ -22,5 +22,6 @@ private:
   Adafruit_SGP30 _sgp;
   uint16_t _TVOCBase, _eCO2Base;
   unsigned long _lastSaved = 0;
+  unsigned long _startupTime = 0;
 };
 #endif
