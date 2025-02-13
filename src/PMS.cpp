@@ -172,7 +172,7 @@ float PMS::epa(float x, float rh) {
       + (8.84 * pow(10, -4) * pow(x, 2) * (x/50 - 21./5))
     );
   } else {
-    v = 2.966 + (0.69 * x) + (pow(8.8410, -4) * pow(x, 2));
+    v = 2.966 + (0.69 * x) + (8.84 * pow(10, -4) * pow(x, 2));
   }
   return v < 0 ? 0 : v;
 }
