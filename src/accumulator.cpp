@@ -166,7 +166,8 @@ float Trend::calc(float value)
       }
       else
       {
-        current += _vals[i];
+        if (_vals[i] > current)
+          current = _vals[i];
         nCurrent++;
       }
     }
@@ -175,5 +176,5 @@ float Trend::calc(float value)
   {
     return NAN;
   }
-  return (current / nCurrent) - (last / nLast);
+  return current - (last / nLast);
 }
