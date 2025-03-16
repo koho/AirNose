@@ -134,6 +134,12 @@ void MQTT::sendHADiscovery() {
   doc["cmps"][rh]["sug_dsp_prc"] = 1;
   doc["cmps"][rh]["uniq_id"] = rh;
   #endif
+  String uptime = String(devId) + "_UPTIME";
+  doc["cmps"][uptime]["p"] = "sensor";
+  doc["cmps"][uptime]["dev_cla"] = "duration";
+  doc["cmps"][uptime]["unit_of_meas"] = "s";
+  doc["cmps"][uptime]["val_tpl"] = "{{ value_json.uptime }}";
+  doc["cmps"][uptime]["uniq_id"] = uptime;
   static char body[2000];
   serializeJson(doc, body);
   _client.setBufferSize(2000);

@@ -11,6 +11,7 @@
 #include "accumulator.h"
 
 MQTT mqtt(MQTT_ADDR, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD);
+unsigned long startupTime = 0;
 
 #ifdef USE_TEMP
 #include <Adafruit_SHT4x.h>
@@ -39,6 +40,7 @@ PMS pms(pmSerial);
 Trend pm25Trend;
 
 void setup() {
+  startupTime = millis();
   Serial.begin(9600);
   Serial.println();
   Serial.print("Connecting to ");
@@ -88,6 +90,7 @@ void setup() {
 
 void loop() {
   JsonDocument doc;
+  doc["uptime"] = (millis() - startupTime) / 1000;
 
   float rh = NAN;
   #ifdef USE_TEMP
